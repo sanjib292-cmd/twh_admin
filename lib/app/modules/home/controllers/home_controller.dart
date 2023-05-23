@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:html' as html;
 
@@ -18,16 +19,29 @@ class HomeController extends GetxController {
   var currentSelectedValue = "".obs;
   var currentSelectedValueTransmission = "".obs;
   var currentSelectedValueFueltype = "".obs;
-  var resellTypeobx="".obs;
-  var categoryObs="".obs;
+  var resellTypeobx = "".obs;
+  var categoryObs = "".obs;
   var lbltxt = "Label Text".obs;
+  var kmDri=''.obs;
+  var name=TextEditingController();
+  var engine=TextEditingController();
+   var milageContr=TextEditingController();
+     var modelYearContr=TextEditingController();
+      var kmDriven=TextEditingController();
+      var priceContr=TextEditingController();
+      var price=''.obs;
+     var modelYear=''.obs;
+   var milage=''.obs;
+  var carname=''.obs;
+  var engineCC=''.obs;
+
   @override
   void onInit() {
     currentSelectedValue.value = safteyRating[0];
     currentSelectedValueTransmission.value = transmission[0];
     currentSelectedValueFueltype.value = fuelType[0];
-    resellTypeobx.value=resellType[0];
-    categoryObs.value=category[0];
+    resellTypeobx.value = resellType[0];
+    categoryObs.value = category[0];
     super.onInit();
   }
 
