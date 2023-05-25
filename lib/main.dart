@@ -9,8 +9,16 @@ import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: FirebaseOptions(
+    apiKey: "AIzaSyAvJ7Ff9ikVZLqdcseDYNpprTAYH-lvKls",
+    authDomain: "twsassam.firebaseapp.com",
+    projectId: "twsassam",
+    storageBucket: "twsassam.appspot.com",
+    messagingSenderId: "355531562824",
+    appId: "1:355531562824:web:14ff12686e933f95e59d7d"
+),
 );
   runApp(
     GetMaterialApp(
