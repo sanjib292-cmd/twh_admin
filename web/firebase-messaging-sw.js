@@ -1,12 +1,13 @@
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 const firebaseConfig = {
-    apiKey: "AIzaSyAvJ7Ff9ikVZLqdcseDYNpprTAYH-lvKls",
-    authDomain: "twsassam.firebaseapp.com",
-    projectId: "twsassam",
-    storageBucket: "twsassam.appspot.com",
-    messagingSenderId: "355531562824",
-    appId: "1:355531562824:web:14ff12686e933f95e59d7d"
+    apiKey: "AIzaSyCq3sA2gjHmiuxGAIA6ikFD9ILJHsB1NV8",
+    authDomain: "the-wagon-house-9314a.firebaseapp.com",
+    projectId: "the-wagon-house-9314a",
+    storageBucket: "the-wagon-house-9314a.appspot.com",
+    messagingSenderId: "482125193930",
+    appId: "1:482125193930:web:ef7823520ecacf8d404a33",
+    measurementId: "G-JWDKWEHC6L"
 };
 firebase.initializeApp(firebaseConfig);
 

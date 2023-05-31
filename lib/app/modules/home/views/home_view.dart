@@ -63,7 +63,7 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Textfields(
                                     contr: controller.name,
-                                    labelTxt: 'Vehicle name',
+                                    labelTxt: 'Vehicle Company',
                                     fn: (str) {
                                       controller.carname.value = str;
                                     },
@@ -71,30 +71,13 @@ class HomeView extends GetView<HomeController> {
                                   SizedBox(
                                     width: 8,
                                   ),
-                                  dropdownField(
-                                      lbltxt: "Safety rating",
-                                      child: Obx(
-                                        () => DropdownButtonHideUnderline(
-                                          child: DropdownButton<String>(
-                                            focusColor: Colors.transparent,
-                                            value: controller
-                                                .currentSelectedValue.value,
-                                            isDense: true,
-                                            onChanged: (stri) {
-                                              print(stri);
-                                              controller.currentSelectedValue
-                                                  .value = stri.toString();
-                                            },
-                                            items: controller.safteyRating
-                                                .map((String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ),
-                                      )),
+                                  Textfields(
+                                    contr: controller.carModelCn,
+                                    labelTxt: 'Vehicle model',
+                                    fn: (str) {
+                                      controller.carModel.value = str;
+                                    },
+                                  ),
                                 ],
                               ),
                               SizedBox(
@@ -205,6 +188,47 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                       )),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                children: [
+                                  dropdownField(
+                                      lbltxt: "Safety rating",
+                                      child: Obx(
+                                        () => DropdownButtonHideUnderline(
+                                          child: DropdownButton<String>(
+                                            focusColor: Colors.transparent,
+                                            value: controller
+                                                .currentSelectedValue.value,
+                                            isDense: true,
+                                            onChanged: (stri) {
+                                              print(stri);
+                                              controller.currentSelectedValue
+                                                  .value = stri.toString();
+                                            },
+                                            items: controller.safteyRating
+                                                .map((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ),
+                                      )),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Textfields(
+                                    labelTxt: 'Current market price',
+                                    fn: (str) {
+                                      controller.currentMarketPrice.value = str;
+                                    },
+                                    contr: controller.currentMarketPriceCn,
+                                  ),
                                 ],
                               ),
                               SizedBox(
@@ -387,56 +411,49 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                 ),
                               ),
-                              SizedBox(height: 15,),
+                              SizedBox(
+                                height: 15,
+                              ),
                               Container(
-      height: 45,
-      width: Get.width * 0.420 + 10,
-      child: TextField(
-        textAlign: TextAlign.center,
-        controller: controller.kmDriven,
-        onChanged: (vl){
-          controller.kmDri.value=vl;
-        },
-        decoration: InputDecoration(
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          alignLabelWithHint: true,
-          labelText: "KM Driven",
-          enabled: true,
-          labelStyle: TextStyle(
-            fontSize: 15,
-            color: Colors.grey,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide:
-                BorderSide(color: Colors.blue), // Set border color to blue
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide:
-                BorderSide(color: Colors.blue), // Set border color to blue
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide:
-                BorderSide(color: Colors.blue), // Set border color to blue
-          ),
-        ),
-      ),
-    ),
-
-
-
-
-
-
-
-
-
-
-
-
-                            
+                                height: 45,
+                                width: Get.width * 0.420 + 10,
+                                child: TextField(
+                                  textAlign: TextAlign.center,
+                                  controller: controller.kmDriven,
+                                  onChanged: (vl) {
+                                    controller.kmDri.value = vl;
+                                  },
+                                  decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.always,
+                                    alignLabelWithHint: true,
+                                    labelText: "KM Driven",
+                                    enabled: true,
+                                    labelStyle: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: BorderSide(
+                                          color: Colors
+                                              .blue), // Set border color to blue
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: BorderSide(
+                                          color: Colors
+                                              .blue), // Set border color to blue
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: BorderSide(
+                                          color: Colors
+                                              .blue), // Set border color to blue
+                                    ),
+                                  ),
+                                ),
+                              ),
                               SizedBox(
                                 height: 20,
                               ),
@@ -491,11 +508,11 @@ class HomeView extends GetView<HomeController> {
                                           children: [
                                             ImageUploadBox(
                                               controller: controller,
-                                              index: 0,
+                                              index: 3,
                                             ),
                                             ImageUploadBox(
                                               controller: controller,
-                                              index: 1,
+                                              index: 4,
                                             ),
                                           ],
                                         ),
@@ -503,7 +520,59 @@ class HomeView extends GetView<HomeController> {
                                     ],
                                   ),
                                 ),
-                              )
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 28.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    print(controller.urls.value);
+                                    controller.addCar(
+                                        con: context,
+                                        carName: controller.carname.value,
+                                        modelNam: controller.carModel.value,
+                                        marktPrice:
+                                            controller.currentMarketPrice.value,
+                                        sellPrice: controller.price.value,
+                                        year: controller.modelYear.value,
+                                        distance: controller.kmDri.value,
+                                        safteyRat: controller
+                                            .currentSelectedValue.value,
+                                        fuel: controller
+                                            .currentSelectedValueFueltype.value,
+                                        gear: controller
+                                            .currentSelectedValueTransmission
+                                            .value,
+                                        imgs: controller.urls.value);
+                                  },
+                                  child: Container(
+                                    // width: 156.72,
+                                    // height: 36,
+                                    color: Color(0xff3d6dfe),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 60,
+                                      vertical: 13,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Save",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontFamily: "Urbanist",
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                           Padding(
@@ -540,18 +609,28 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 25.0, left: 10, right: 10),
-                                        child: Container(
-                                          height: 168,
-                                          width: Get.width,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'assets/suv.png'),
-                                                  fit: BoxFit.contain)),
-                                        ),
-                                      ),
+                                          padding: const EdgeInsets.only(
+                                              top: 25.0, left: 10, right: 10),
+                                          child: Obx(
+                                            () => Container(
+                                              height: 168,
+                                              width: Get.width,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(7),
+                                                  image: controller.urls.isEmpty
+                                                      ? DecorationImage(
+                                                          image: AssetImage(
+                                                              'assets/suv.png'),
+                                                          fit: BoxFit.contain)
+                                                      : DecorationImage(
+                                                          image: MemoryImage(
+                                                            controller
+                                                                .images[0],
+                                                          ),
+                                                          fit: BoxFit.contain)),
+                                            ),
+                                          )),
                                       Padding(
                                         padding: const EdgeInsets.only(
                                             top: 18.0, left: 22, right: 70),
@@ -613,16 +692,16 @@ class HomeView extends GetView<HomeController> {
                                                       SizedBox(
                                                         height: 6,
                                                       ),
-                                                      Obx(()=>
-                                                      Text(
-                                                        "${controller.kmDri.value}",
-                                                        style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 19,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      )),
+                                                      Obx(() => Text(
+                                                            "${controller.kmDri.value}",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 19,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          )),
                                                     ],
                                                   ),
                                                 ],

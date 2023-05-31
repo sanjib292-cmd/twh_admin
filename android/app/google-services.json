@@ -29,6 +29,13 @@
             {
               "client_id": "482125193930-06ok2mrjgig3bt5c7ckerspbp8gv40s3.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "482125193930-soqn3dvtmh5p2hqsecb5k3rlaq7it0v1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.twh.twhAdmin"
+              }
             }
           ]
         }
