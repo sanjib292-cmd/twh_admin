@@ -62,7 +62,9 @@ class HomeController extends GetxController {
     var token = await FirebaseMessaging.instance.getToken(
         vapidKey:
             'BCH4EISRG1LId2S53NU04Jmv9Hns4e2c8OA1dbFrCgnArcUkZoUx1fuQEJsG0qhNLHGbulBQriQqMxtVxUpKnfQ');
+
     print('token is $token');
+    return token;
   }
 
   @override
@@ -80,7 +82,7 @@ class HomeController extends GetxController {
     }).onError((err) {
       // Error getting token.
     });
-    getToken();
+    // getToken();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('Got a message whilst in the foreground!');
       print('Message data: ${message.data}');
@@ -202,7 +204,7 @@ class HomeController extends GetxController {
     var token = pref.getString('token');
 
     var res = await carsProvider.addCars(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDY4NTdhZTkwZWU2MWQzMjAxZmJiNWQiLCJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImlhdCI6MTY4NTAxOTc3OX0.SRArm01Hc2MNRLnHg8pdtLPbDEfusxqGOehIxiwybb4',
+        '$token',
         addCarsRequest.toJson());
     print('phone is ${res.request}  ${res.status} ${res.statusText}');
 
@@ -245,7 +247,7 @@ class HomeController extends GetxController {
     isLoading2.value = true;
     try {
       print('PAGE${page}');
-      var res = await carsProvider.viewAllCarsPaginate('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDY4NTdhZTkwZWU2MWQzMjAxZmJiNWQiLCJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImlhdCI6MTY4NTAxOTc3OX0.SRArm01Hc2MNRLnHg8pdtLPbDEfusxqGOehIxiwybb4', page);
+      var res = await carsProvider.viewAllCarsPaginate('$token', page);
 
       if (res.body['code'] == 200) {
         isLoading2.value = false;

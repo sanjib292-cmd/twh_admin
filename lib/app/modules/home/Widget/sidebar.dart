@@ -160,7 +160,7 @@ class SideBar extends StatelessWidget {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed('/home');
+                  Get.toNamed('/users-list');
                 },
                 child: Row(
                   children: [
@@ -181,7 +181,7 @@ class SideBar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    ModalRoute.of(context)!.settings.name == '/home'
+                    ModalRoute.of(context)!.settings.name == '/users-list'
                         ? Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: Icon(

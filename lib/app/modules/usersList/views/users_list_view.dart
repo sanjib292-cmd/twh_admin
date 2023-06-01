@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:twh_admin/app/modules/home/Widget/sidebar.dart';
 
-import '../controllers/notification_controller.dart';
+import '../../home/Widget/sidebar.dart';
+import '../controllers/users_list_controller.dart';
 
-class NotificationView extends GetView<NotificationController> {
-  const NotificationView({Key? key}) : super(key: key);
+class UsersListView extends GetView<UsersListController> {
+  const UsersListView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class NotificationView extends GetView<NotificationController> {
                       alignment: Alignment.center,
                       child: Center(
                         child: Text(
-                          "All Notification",
+                          "All Users",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -40,7 +40,7 @@ class NotificationView extends GetView<NotificationController> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Center(
                           child: Text(
-                        "List of all Notifications",
+                        "List of all Users",
                         style: TextStyle(
                           color: Color(0xb2000000),
                           fontSize: 16,
@@ -136,7 +136,7 @@ class NotificationView extends GetView<NotificationController> {
                               Container(
                                 width: 100,
                                 child: Text(
-                                  "Interested Car",
+                                  "City",
                                   style: TextStyle(
                                     color: Color(0xb2000000),
                                     fontSize: 14,
@@ -241,7 +241,7 @@ class NotificationView extends GetView<NotificationController> {
                                       Container(
                                         width: 100,
                                         child: Text(
-                                          "Swift ZX I 2108",
+                                          "Bongaigaon",
                                           style: TextStyle(
                                             color: Color(0x99000000),
                                             fontSize: 14,
