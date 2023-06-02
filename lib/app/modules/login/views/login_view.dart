@@ -98,15 +98,15 @@ class LoginView extends GetView<LoginController> {
                       padding: const EdgeInsets.only(top: 20.0),
                       child: GestureDetector(
                         onTap: () async {
-                          var token =await homecontroller.getToken();
+                          var token = await homecontroller.getToken();
                           controller.loginAdmin(
-                            con: context,
+                              con: context,
                               email: controller.emailLogin.text,
                               password: controller.passwordLogin.text,
                               diviceToken: token);
                         },
                         child: MouseRegion(
-                             cursor: SystemMouseCursors.click,
+                          cursor: SystemMouseCursors.click,
                           child: Container(
                               width: 370,
                               height: 50,

@@ -9,6 +9,19 @@ class CarsProvider extends GetConnect {
     httpClient.defaultContentType = 'application/json';
   }
 
+  Future<Response> getAllUser(token, pageNum) => get(
+        "/api/user/admin/viewAllUsers",
+        headers: {
+          "token": "Bearer $token",
+          'contentType': 'application/json',
+          // 'contentLength': utf8.encode(json.encode(data)).length.toString()
+        },
+        query: {
+          'pageNo': pageNum,
+          'perPage': '10',
+        },
+      );
+
   Future<Response> addCars(token, Map data) => post(
         "/api/car/admin/add",
         json.encode(data),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:twh_admin/app/modules/usersList/getallUserResponse.dart';
 
 import '../../home/Widget/sidebar.dart';
 import '../controllers/users_list_controller.dart';
@@ -151,112 +153,116 @@ class UsersListView extends GetView<UsersListController> {
                       ),
                     ),
                     Expanded(
-                      child: ListView.builder(
-                          itemCount: 10,
-                          itemBuilder: (context, ind) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
-                              child: Container(
-                                color: Color(0xfffafafa),
-                                height: 50,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 15.0, right: 200),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 100,
-                                        child: Text(
-                                          "1234",
-                                          style: TextStyle(
-                                            color: Color(0x99000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                        child: PagedListView<int, Data>(
+                            pagingController: controller.pagingController,
+                            // itemCount: 20,
+                            builderDelegate: PagedChildBuilderDelegate<Data>(
+                                itemBuilder: (context, item, index) =>
+                                     Padding(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    child: Container(
+                                      color: Color(0xfffafafa),
+                                      height: 50,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 15.0, right: 200),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              width: 100,
+                                              child: Text(
+                                                "${item.sId}",
+                                                style: TextStyle(
+                                                  color: Color(0x99000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 10,
+                                              child: Text(
+                                                "",
+                                                style: TextStyle(
+                                                  color: Color(0xb2000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 100,
+                                              child: Text(
+                                                "${item.name}",
+                                                style: TextStyle(
+                                                  color: Color(0x99000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 10,
+                                              child: Text(
+                                                "",
+                                                style: TextStyle(
+                                                  color: Color(0xb2000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 100,
+                                              child: Text(
+                                                "${item.phone}",
+                                                style: TextStyle(
+                                                  color: Color(0x99000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 10,
+                                              child: Text(
+                                                "",
+                                                style: TextStyle(
+                                                  color: Color(0xb2000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 100,
+                                              child: Text(
+                                                "${item.city}",
+                                                style: TextStyle(
+                                                  color: Color(0x99000000),
+                                                  fontSize: 14,
+                                                  fontFamily: "Urbanist",
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            )
+                                          ],
                                         ),
                                       ),
-                                      Container(
-                                        width: 10,
-                                        child: Text(
-                                          "",
-                                          style: TextStyle(
-                                            color: Color(0xb2000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 100,
-                                        child: Text(
-                                          "Sanjib sah",
-                                          style: TextStyle(
-                                            color: Color(0x99000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 10,
-                                        child: Text(
-                                          "",
-                                          style: TextStyle(
-                                            color: Color(0xb2000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 100,
-                                        child: Text(
-                                          "7002269853",
-                                          style: TextStyle(
-                                            color: Color(0x99000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 10,
-                                        child: Text(
-                                          "",
-                                          style: TextStyle(
-                                            color: Color(0xb2000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 100,
-                                        child: Text(
-                                          "Bongaigaon",
-                                          style: TextStyle(
-                                            color: Color(0x99000000),
-                                            fontSize: 14,
-                                            fontFamily: "Urbanist",
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          }),
-                    )
+                                    ),
+                                  ))
+
+                          
+
+                            ))
                   ],
                 ),
               ),
@@ -267,3 +273,4 @@ class UsersListView extends GetView<UsersListController> {
     );
   }
 }
+
