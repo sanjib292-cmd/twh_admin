@@ -35,7 +35,7 @@ class Data {
   String? gender;
   String? email;
   String? city;
-  List<Null>? interestedCars;
+  List<dynamic>? interestedCars;
   String? createdAt;
   String? updatedAt;
   int? iV;
@@ -62,7 +62,7 @@ class Data {
     email = json['email'];
     city = json['city'];
     if (json['interestedCars'] != null) {
-      interestedCars = <Null>[];
+      interestedCars = [];
       json['interestedCars'].forEach((v) {
         interestedCars!.add(v);
       });

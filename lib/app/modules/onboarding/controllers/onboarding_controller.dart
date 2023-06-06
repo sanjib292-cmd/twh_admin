@@ -100,11 +100,7 @@ class OnboardingController extends GetxController {
 
       ScaffoldMessenger.of(con).showSnackBar(snackBar);
 
-      return Navigator.pushAndRemoveUntil(
-        con,
-        MaterialPageRoute(builder: (context) => HomeView()),
-        (route) => false,
-      );
+      return Get.toNamed('/home');
     } else {
       final snackBar = SnackBar(
         content: Text('${res.body['message']}'),

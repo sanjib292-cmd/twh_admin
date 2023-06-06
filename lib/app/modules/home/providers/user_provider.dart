@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class CarsProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = "http://192.168.0.185:5000";
+    httpClient.baseUrl = "http://45.61.146.42:5000";
     httpClient.defaultContentType = 'application/json';
   }
 
@@ -41,6 +41,19 @@ class CarsProvider extends GetConnect {
         },
         query: {
           'pageNo': pageNum.toString(),
+          'perPage': '10',
+        },
+      );
+
+  Future<Response> getAllNotification(token, pageNum) => get(
+        "/api/admin/notifications",
+        headers: {
+          "token": "Bearer $token",
+          'contentType': 'application/json',
+          // 'contentLength': utf8.encode(json.encode(data)).length.toString()
+        },
+        query: {
+          'pageNo': pageNum,
           'perPage': '10',
         },
       );

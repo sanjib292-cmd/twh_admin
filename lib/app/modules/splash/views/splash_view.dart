@@ -7,9 +7,9 @@ import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
   SplashView({Key? key}) : super(key: key);
-
-  func(context) {
     final splashController = Get.put(SplashController());
+  func(context) {
+
     // controller.playSound(context);
     Future.delayed(Duration(seconds: 2), () {
       splashController.isUserLoggedIn();

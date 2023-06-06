@@ -1,8 +1,10 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import 'package:twh_admin/app/modules/home/Widget/sidebar.dart';
 
@@ -13,6 +15,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final NumberFormat numberFormat = NumberFormat('#,##,###');
     return Scaffold(
         body: Row(
       children: [
@@ -86,10 +89,33 @@ class HomeView extends GetView<HomeController> {
                               Row(
                                 children: [
                                   Textfields(
+                                    inpformat: [
+        FilteringTextInputFormatter.allow(RegExp(r'^[0-9,]*$')),
+ 
+      ],
                                     labelTxt: 'Price',
                                     fn: (str) {
-                                      controller.price.value = str;
-                                    },
+                                      final numericValue =
+                                          int.tryParse(str.replaceAll(',', ''));
+                                      controller.price.value = str.replaceAll(',', '');
+
+        if (numericValue != null) {
+          final formattedValue = numberFormat.format(numericValue);
+          if (controller.priceContr.text != formattedValue) {
+            controller.priceContr.value = TextEditingValue(
+              text: formattedValue,
+              selection: TextSelection.collapsed(offset: formattedValue.length),
+            );
+          }
+        } else if (str.isNotEmpty) {
+          controller.priceContr.value = TextEditingValue(
+            text: controller.priceContr.text,
+            selection: TextSelection.collapsed(offset: controller.priceContr.text.length),
+          );
+        }
+      },
+    
+                                    
                                     contr: controller.priceContr,
                                   ),
                                   SizedBox(
@@ -107,30 +133,30 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 height: 15,
                               ),
-                              Row(
-                                children: [
-                                  Textfields(
-                                    labelTxt: 'Engine CC',
-                                    fn: (str) {
-                                      controller.engineCC.value = str;
-                                    },
-                                    contr: controller.engine,
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Textfields(
-                                    labelTxt: 'mileage',
-                                    fn: (str) {
-                                      controller.milage.value = str;
-                                    },
-                                    contr: controller.milageContr,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
+                              // Row(
+                              //   children: [
+                              //     Textfields(
+                              //       labelTxt: 'Engine CC',
+                              //       fn: (str) {
+                              //         controller.engineCC.value = str;
+                              //       },
+                              //       contr: controller.engine,
+                              //     ),
+                              //     SizedBox(
+                              //       width: 8,
+                              //     ),
+                              //     Textfields(
+                              //       labelTxt: 'mileage',
+                              //       fn: (str) {
+                              //         controller.milage.value = str;
+                              //       },
+                              //       contr: controller.milageContr,
+                              //     ),
+                              //   ],
+                              // ),
+                              // SizedBox(
+                              //   height: 15,
+                              // ),
                               Row(
                                 children: [
                                   dropdownField(
@@ -223,194 +249,214 @@ class HomeView extends GetView<HomeController> {
                                     width: 8,
                                   ),
                                   Textfields(
+                                     inpformat: [
+        FilteringTextInputFormatter.allow(RegExp(r'^[0-9,]*$')),
+ 
+      ],
                                     labelTxt: 'Current market price',
                                     fn: (str) {
-                                      controller.currentMarketPrice.value = str;
+                                      controller.currentMarketPrice.value = str.replaceAll(',', '');
+                                            final numericValue =
+                                          int.tryParse(str.replaceAll(',', ''));
+                                       if (numericValue != null) {
+          final formattedValue = numberFormat.format(numericValue);
+          if (controller.currentMarketPriceCn.text != formattedValue) {
+            controller.currentMarketPriceCn.value = TextEditingValue(
+              text: formattedValue,
+              selection: TextSelection.collapsed(offset: formattedValue.length),
+            );
+          }
+        } else if (str.isNotEmpty) {
+          controller.currentMarketPriceCn.value = TextEditingValue(
+            text: controller.currentMarketPriceCn.text,
+            selection: TextSelection.collapsed(offset: controller.currentMarketPriceCn.text.length),
+          );
+        }
                                     },
                                     contr: controller.currentMarketPriceCn,
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Container(
-                                  height: 45,
-                                  width: Get.width * 0.420 + 10,
-                                  child: Obx(
-                                    () => controller.non.value == "abc"
-                                        ? Container()
-                                        : FormField<String>(
-                                            builder:
-                                                (FormFieldState<String> state) {
-                                              return InputDecorator(
-                                                  decoration: InputDecoration(
-                                                    contentPadding:
-                                                        EdgeInsets.only(
-                                                            left: 12,
-                                                            right: 12),
-                                                    floatingLabelBehavior:
-                                                        FloatingLabelBehavior
-                                                            .always,
-                                                    labelStyle: TextStyle(
-                                                      fontSize: 15,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    labelText: 'Resell type',
-                                                    // labelStyle: textStyle,
-                                                    errorStyle: TextStyle(
-                                                        color: Colors.redAccent,
-                                                        fontSize: 16.0),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      borderSide: BorderSide(
-                                                          color: Colors
-                                                              .blue), // Set border color to blue
-                                                    ),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      borderSide: BorderSide(
-                                                          color: Colors
-                                                              .blue), // Set border color to blue
-                                                    ),
-                                                    border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      borderSide: BorderSide(
-                                                          color: Colors
-                                                              .blue), // Set border color to blue
-                                                    ),
-                                                  ),
-                                                  isEmpty: controller
-                                                          .currentSelectedValue ==
-                                                      '',
-                                                  child: Obx(
-                                                    () =>
-                                                        DropdownButtonHideUnderline(
-                                                      child: DropdownButton<
-                                                          String>(
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        value: controller
-                                                            .resellTypeobx
-                                                            .value,
-                                                        isDense: true,
-                                                        onChanged: (stri) {
-                                                          print(stri);
-                                                          controller
-                                                                  .resellTypeobx
-                                                                  .value =
-                                                              stri.toString();
-                                                        },
-                                                        items: controller
-                                                            .resellType
-                                                            .map(
-                                                                (String value) {
-                                                          return DropdownMenuItem<
-                                                              String>(
-                                                            value: value,
-                                                            child: Text(value),
-                                                          );
-                                                        }).toList(),
-                                                      ),
-                                                    ),
-                                                  ));
-                                            },
-                                          ),
-                                  )),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Container(
-                                height: 45,
-                                width: Get.width * 0.420 + 10,
-                                child: Obx(
-                                  () => controller.non.value == "abc"
-                                      ? Container()
-                                      : FormField<String>(
-                                          builder:
-                                              (FormFieldState<String> state) {
-                                            return InputDecorator(
-                                                decoration: InputDecoration(
-                                                  contentPadding:
-                                                      EdgeInsets.only(
-                                                          left: 12, right: 12),
-                                                  floatingLabelBehavior:
-                                                      FloatingLabelBehavior
-                                                          .always,
-                                                  labelStyle: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Colors.grey,
-                                                  ),
-                                                  labelText: 'Category Type',
-                                                  errorStyle: TextStyle(
-                                                    color: Colors.redAccent,
-                                                    fontSize: 16.0,
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .blue), // Set border color to blue
-                                                  ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .blue), // Set border color to blue
-                                                  ),
-                                                  border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .blue), // Set border color to blue
-                                                  ),
-                                                ),
-                                                child: Obx(
-                                                  () =>
-                                                      DropdownButtonHideUnderline(
-                                                    child:
-                                                        DropdownButton<String>(
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      value: controller
-                                                          .categoryObs.value,
-                                                      isDense: true,
-                                                      onChanged: (stri) {
-                                                        print(stri);
-                                                        controller.categoryObs
-                                                            .value = stri!;
-                                                      },
-                                                      items: controller.category
-                                                          .map((String value) {
-                                                        return DropdownMenuItem<
-                                                            String>(
-                                                          value: value,
-                                                          child: Text(value),
-                                                        );
-                                                      }).toList(),
-                                                    ),
-                                                  ),
-                                                ));
-                                          },
-                                        ),
-                                ),
-                              ),
+                              // SizedBox(
+                              //   height: 15,
+                              // ),
+                              // Container(
+                              //     height: 45,
+                              //     width: Get.width * 0.420 + 10,
+                              //     child: Obx(
+                              //       () => controller.non.value == "abc"
+                              //           ? Container()
+                              //           : FormField<String>(
+                              //               builder:
+                              //                   (FormFieldState<String> state) {
+                              //                 return InputDecorator(
+                              //                     decoration: InputDecoration(
+                              //                       contentPadding:
+                              //                           EdgeInsets.only(
+                              //                               left: 12,
+                              //                               right: 12),
+                              //                       floatingLabelBehavior:
+                              //                           FloatingLabelBehavior
+                              //                               .always,
+                              //                       labelStyle: TextStyle(
+                              //                         fontSize: 15,
+                              //                         color: Colors.grey,
+                              //                       ),
+                              //                       labelText: 'Resell type',
+                              //                       // labelStyle: textStyle,
+                              //                       errorStyle: TextStyle(
+                              //                           color: Colors.redAccent,
+                              //                           fontSize: 16.0),
+                              //                       focusedBorder:
+                              //                           OutlineInputBorder(
+                              //                         borderRadius:
+                              //                             BorderRadius.circular(
+                              //                                 5.0),
+                              //                         borderSide: BorderSide(
+                              //                             color: Colors
+                              //                                 .blue), // Set border color to blue
+                              //                       ),
+                              //                       enabledBorder:
+                              //                           OutlineInputBorder(
+                              //                         borderRadius:
+                              //                             BorderRadius.circular(
+                              //                                 5.0),
+                              //                         borderSide: BorderSide(
+                              //                             color: Colors
+                              //                                 .blue), // Set border color to blue
+                              //                       ),
+                              //                       border: OutlineInputBorder(
+                              //                         borderRadius:
+                              //                             BorderRadius.circular(
+                              //                                 5.0),
+                              //                         borderSide: BorderSide(
+                              //                             color: Colors
+                              //                                 .blue), // Set border color to blue
+                              //                       ),
+                              //                     ),
+                              //                     isEmpty: controller
+                              //                             .currentSelectedValue ==
+                              //                         '',
+                              //                     child: Obx(
+                              //                       () =>
+                              //                           DropdownButtonHideUnderline(
+                              //                         child: DropdownButton<
+                              //                             String>(
+                              //                           focusColor:
+                              //                               Colors.transparent,
+                              //                           value: controller
+                              //                               .resellTypeobx
+                              //                               .value,
+                              //                           isDense: true,
+                              //                           onChanged: (stri) {
+                              //                             print(stri);
+                              //                             controller
+                              //                                     .resellTypeobx
+                              //                                     .value =
+                              //                                 stri.toString();
+                              //                           },
+                              //                           items: controller
+                              //                               .resellType
+                              //                               .map(
+                              //                                   (String value) {
+                              //                             return DropdownMenuItem<
+                              //                                 String>(
+                              //                               value: value,
+                              //                               child: Text(value),
+                              //                             );
+                              //                           }).toList(),
+                              //                         ),
+                              //                       ),
+                              //                     ));
+                              //               },
+                              //             ),
+                              //     )),
+                              // SizedBox(
+                              //   height: 15,
+                              // ),
+                              // Container(
+                              //   height: 45,
+                              //   width: Get.width * 0.420 + 10,
+                              //   child: Obx(
+                              //     () => controller.non.value == "abc"
+                              //         ? Container()
+                              //         : FormField<String>(
+                              //             builder:
+                              //                 (FormFieldState<String> state) {
+                              //               return InputDecorator(
+                              //                   decoration: InputDecoration(
+                              //                     contentPadding:
+                              //                         EdgeInsets.only(
+                              //                             left: 12, right: 12),
+                              //                     floatingLabelBehavior:
+                              //                         FloatingLabelBehavior
+                              //                             .always,
+                              //                     labelStyle: TextStyle(
+                              //                       fontSize: 15,
+                              //                       color: Colors.grey,
+                              //                     ),
+                              //                     labelText: 'Category Type',
+                              //                     errorStyle: TextStyle(
+                              //                       color: Colors.redAccent,
+                              //                       fontSize: 16.0,
+                              //                     ),
+                              //                     focusedBorder:
+                              //                         OutlineInputBorder(
+                              //                       borderRadius:
+                              //                           BorderRadius.circular(
+                              //                               5.0),
+                              //                       borderSide: BorderSide(
+                              //                           color: Colors
+                              //                               .blue), // Set border color to blue
+                              //                     ),
+                              //                     enabledBorder:
+                              //                         OutlineInputBorder(
+                              //                       borderRadius:
+                              //                           BorderRadius.circular(
+                              //                               5.0),
+                              //                       borderSide: BorderSide(
+                              //                           color: Colors
+                              //                               .blue), // Set border color to blue
+                              //                     ),
+                              //                     border: OutlineInputBorder(
+                              //                       borderRadius:
+                              //                           BorderRadius.circular(
+                              //                               5.0),
+                              //                       borderSide: BorderSide(
+                              //                           color: Colors
+                              //                               .blue), // Set border color to blue
+                              //                     ),
+                              //                   ),
+                              //                   child: Obx(
+                              //                     () =>
+                              //                         DropdownButtonHideUnderline(
+                              //                       child:
+                              //                           DropdownButton<String>(
+                              //                         focusColor:
+                              //                             Colors.transparent,
+                              //                         value: controller
+                              //                             .categoryObs.value,
+                              //                         isDense: true,
+                              //                         onChanged: (stri) {
+                              //                           print(stri);
+                              //                           controller.categoryObs
+                              //                               .value = stri!;
+                              //                         },
+                              //                         items: controller.category
+                              //                             .map((String value) {
+                              //                           return DropdownMenuItem<
+                              //                               String>(
+                              //                             value: value,
+                              //                             child: Text(value),
+                              //                           );
+                              //                         }).toList(),
+                              //                       ),
+                              //                     ),
+                              //                   ));
+                              //             },
+                              //           ),
+                              //   ),
+                              // ),
                               SizedBox(
                                 height: 15,
                               ),
@@ -418,6 +464,10 @@ class HomeView extends GetView<HomeController> {
                                 height: 45,
                                 width: Get.width * 0.420 + 10,
                                 child: TextField(
+                                   inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^[0-9,]*$')),
+ 
+      ],
                                   textAlign: TextAlign.center,
                                   controller: controller.kmDriven,
                                   onChanged: (vl) {
@@ -524,8 +574,10 @@ class HomeView extends GetView<HomeController> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 28.0),
                                 child: GestureDetector(
-                                  onTap: () {
-                                    print(controller.urls.value);
+                                  onTap: () async{
+                                  
+                                  
+                                    await 
                                     controller.addCar(
                                         con: context,
                                         carName: controller.carname.value,
@@ -543,6 +595,9 @@ class HomeView extends GetView<HomeController> {
                                             .currentSelectedValueTransmission
                                             .value,
                                         imgs: controller.urls.value);
+                                          controller.images.value=[];
+                                  controller.urls.value=[];
+                                        Get.toNamed('/home');
                                   },
                                   child: Container(
                                     // width: 156.72,
@@ -976,8 +1031,8 @@ class ImageUploadBox extends StatelessWidget {
 }
 
 class Textfields extends StatelessWidget {
-  var labelTxt, contr, fn;
-  Textfields({super.key, this.labelTxt, this.contr, this.fn});
+  var labelTxt, contr, fn, inpformat;
+  Textfields({super.key, this.labelTxt, this.contr, this.fn, this.inpformat});
 
   @override
   Widget build(BuildContext context) {
@@ -985,6 +1040,7 @@ class Textfields extends StatelessWidget {
       height: 45,
       width: Get.width * 0.210,
       child: TextField(
+        inputFormatters: inpformat,
         textAlign: TextAlign.center,
         controller: contr,
         onChanged: fn,

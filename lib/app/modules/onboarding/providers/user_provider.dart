@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class UserProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = "http://192.168.0.185:5000";
+    httpClient.baseUrl = "http://45.61.146.42:5000";
     httpClient.defaultContentType = 'application/json';
   }
 

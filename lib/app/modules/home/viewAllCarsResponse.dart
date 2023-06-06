@@ -37,8 +37,8 @@ class Data {
   String? gearTransmission;
   String? price;
   List<String>? imagesUrl;
-  List<Null>? views;
-  List<Null>? interestedUsers;
+  List<dynamic>? views;
+  List<dynamic>? interestedUsers;
   String? createdAt;
   String? updatedAt;
   int? iV;
@@ -72,13 +72,13 @@ class Data {
     price = json['price'];
     imagesUrl = json['imagesUrl'].cast<String>();
     if (json['views'] != null) {
-      views = <Null>[];
+      views = [];
       json['views'].forEach((v) {
         views!.add(v);
       });
     }
     if (json['interestedUsers'] != null) {
-      interestedUsers = <Null>[];
+      interestedUsers = [];
       json['interestedUsers'].forEach((v) {
         interestedUsers!.add(v);
       });
