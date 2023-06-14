@@ -248,6 +248,7 @@ class HomeController extends GetxController {
     try {
       print('PAGE${page}');
       var res = await carsProvider.viewAllCarsPaginate('$token', page);
+      print("base ${carsProvider.baseUrl}");
 
       if (res.body['code'] == 200) {
         isLoading2.value = false;

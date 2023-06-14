@@ -11,6 +11,7 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const SPLASH = _Paths.SPLASH;
   static const NOTIFICATION_LIST = _Paths.NOTIFICATION_LIST;
+  static const EDIT_CARS = _Paths.EDIT_CARS;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const SPLASH = '/splash';
   static const NOTIFICATION_LIST = '/notification-list';
+  static const EDIT_CARS = '/edit-cars';
 }

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class CarsProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = "http://45.61.146.42:5000";
+    httpClient.baseUrl = "https://backend.thewagonhouse.in";
     httpClient.defaultContentType = 'application/json';
   }
 
@@ -13,8 +13,6 @@ class CarsProvider extends GetConnect {
         "/api/user/admin/viewAllUsers",
         headers: {
           "token": "Bearer $token",
-          'contentType': 'application/json',
-          // 'contentLength': utf8.encode(json.encode(data)).length.toString()
         },
         query: {
           'pageNo': pageNum,
@@ -27,8 +25,6 @@ class CarsProvider extends GetConnect {
         json.encode(data),
         headers: {
           "token": "Bearer $token",
-          'contentType': 'application/json',
-          // 'contentLength': utf8.encode(json.encode(data)).length.toString()
         },
       );
 
@@ -36,8 +32,6 @@ class CarsProvider extends GetConnect {
         "/api/car/admin/viewAllCars",
         headers: {
           "token": "Bearer $token",
-          'contentType': 'application/json',
-          // 'contentLength': utf8.encode(json.encode(data)).length.toString()
         },
         query: {
           'pageNo': pageNum.toString(),
@@ -49,8 +43,6 @@ class CarsProvider extends GetConnect {
         "/api/admin/notifications",
         headers: {
           "token": "Bearer $token",
-          'contentType': 'application/json',
-          // 'contentLength': utf8.encode(json.encode(data)).length.toString()
         },
         query: {
           'pageNo': pageNum,

@@ -15,7 +15,7 @@ class OnboardingView extends GetView<OnboardingController> {
               child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('bg1.jpg'), fit: BoxFit.fill)),
+                    image: AssetImage('assets/bg1.jpg'), fit: BoxFit.fill)),
             child: Stack(
               children: [],
             ),
@@ -32,7 +32,7 @@ class OnboardingView extends GetView<OnboardingController> {
                         width: 157,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('dada.png'),
+                                image: AssetImage('assets/dada.png'),
                                 fit: BoxFit.fill)),
                       ),
                     ),

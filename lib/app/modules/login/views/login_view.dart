@@ -21,7 +21,7 @@ class LoginView extends GetView<LoginController> {
               child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('bg1.jpg'), fit: BoxFit.fill)),
+                    image: AssetImage('assets/bg1.jpg'), fit: BoxFit.fill)),
             child: Stack(
               children: [],
             ),
@@ -38,7 +38,7 @@ class LoginView extends GetView<LoginController> {
                         width: 157,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('dada.png'),
+                                image: AssetImage('assets/dada.png'),
                                 fit: BoxFit.fill)),
                       ),
                     ),
@@ -98,7 +98,9 @@ class LoginView extends GetView<LoginController> {
                       padding: const EdgeInsets.only(top: 20.0),
                       child: GestureDetector(
                         onTap: () async {
+                          print('ok');
                           var token = await homecontroller.getToken();
+                          print(token);
                           controller.loginAdmin(
                               con: context,
                               email: controller.emailLogin.text,

@@ -33,7 +33,7 @@ void main() async {
           PointerDeviceKind.unknown
         },
       ),
-      title: "Application",
+      title: "TWH Admin",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

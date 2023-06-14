@@ -2,7 +2,10 @@ import 'package:get/get.dart';
 
 import '../modules/carlist/bindings/carlist_binding.dart';
 import '../modules/carlist/views/carlist_view.dart';
+import '../modules/editCars/bindings/edit_cars_binding.dart';
+import '../modules/editCars/views/edit_cars_view.dart';
 import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/viewAllCarsResponse.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
@@ -64,6 +67,11 @@ class AppPages {
       name: _Paths.NOTIFICATION_LIST,
       page: () => const NotificationListView(),
       binding: NotificationListBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_CARS,
+      page: () =>  EditCarsView(carDetails:Data.fromJson({}),),
+      binding: EditCarsBinding(),
     ),
   ];
 }

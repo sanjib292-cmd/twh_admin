@@ -653,7 +653,7 @@ class HomeView extends GetView<HomeController> {
                                         child: Container(
                                           width: Get.width / 4.2,
                                           child: Obx(() => Text(
-                                                "${controller.carname.value == "" ? "Add name" : controller.carname.value}",
+                                                "${controller.carname.value == "" && controller.carModel.value=="" ? "Add name" : "${controller.carname.value} ${controller.carModel.value}"}",
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
@@ -667,7 +667,18 @@ class HomeView extends GetView<HomeController> {
                                           padding: const EdgeInsets.only(
                                               top: 25.0, left: 10, right: 10),
                                           child: Obx(
-                                            () => Container(
+                                            () =>controller.images.isEmpty?Container(
+                                              height: 168,
+                                              width: Get.width,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(7),
+                                                  image: DecorationImage(
+                                                          image: AssetImage(
+                                                              'assets/suv.png'),
+                                                          fit: BoxFit.contain)
+                                                      ),
+                                            ): Container(
                                               height: 168,
                                               width: Get.width,
                                               decoration: BoxDecoration(
@@ -818,7 +829,7 @@ class HomeView extends GetView<HomeController> {
                                                         img:
                                                             'assets/milage.svg',
                                                         info:
-                                                            'Mileage : ${controller.milage.value} kmpl',
+                                                            'Model year: ${controller.modelYear.value}',
                                                       )),
                                                   Obx(() => infoBox(
                                                         img: 'assets/fuel.svg',
@@ -842,11 +853,11 @@ class HomeView extends GetView<HomeController> {
                                                         info:
                                                             'Safety : ${controller.currentSelectedValue.value} Star (Global NCAP)',
                                                       )),
-                                                  Obx(() => infoBox(
-                                                        img: 'assets/star.svg',
-                                                        info:
-                                                            'Resell type : ${controller.resellTypeobx.value}',
-                                                      )),
+                                                  // Obx(() => infoBox(
+                                                  //       img: 'assets/star.svg',
+                                                  //       info:
+                                                  //           'Resell type : ${controller.resellTypeobx.value}',
+                                                  //     )),
                                                 ],
                                               ),
                                               SizedBox(

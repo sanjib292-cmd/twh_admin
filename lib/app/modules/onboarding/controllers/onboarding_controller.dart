@@ -82,37 +82,44 @@ class OnboardingController extends GetxController {
     adminLoginReqest.adminDeviceToken = diviceToken;
     SharedPreferences pref = await SharedPreferences.getInstance();
 
-    var res = await userProvider.loginAdmin(adminLoginReqest.toJson());
-    if (res.body['code'] == 200) {
-      print(res.body);
-      AdminLoginResponse adminLoginResponse =
-          AdminLoginResponse.fromJson(res.body);
-      pref.setString('token', "${adminLoginResponse.data!.token}");
-      print('Token <><><><> ${adminLoginResponse.data!.token}');
-      final snackBar = SnackBar(
-        content: Text('${res.body['message']}'),
-        backgroundColor: (Colors.black),
-        action: SnackBarAction(
-          label: 'dismiss',
-          onPressed: () {},
-        ),
-      );
-
-      ScaffoldMessenger.of(con).showSnackBar(snackBar);
-
-      return Get.toNamed('/home');
-    } else {
-      final snackBar = SnackBar(
-        content: Text('${res.body['message']}'),
-        backgroundColor: (Colors.black),
-        action: SnackBarAction(
-          label: 'dismiss',
-          onPressed: () {},
-        ),
-      );
-
-      return ScaffoldMessenger.of(con).showSnackBar(snackBar);
-    }
+    try {
+      print('Requst ${adminLoginReqest.toJson()}');
+  var res = await userProvider.loginAdmin(adminLoginReqest.toJson());
+  print('Status check error ${res.body}');
+  if (res.body['code'] == 200) {
+    print(res.body);
+    AdminLoginResponse adminLoginResponse =
+        AdminLoginResponse.fromJson(res.body);
+    pref.setString('token', "${adminLoginResponse.data!.token}");
+    print('Token <><><><> ${adminLoginResponse.data!.token}');
+    final snackBar = SnackBar(
+      content: Text('${res.body['message']}'),
+      backgroundColor: (Colors.black),
+      action: SnackBarAction(
+        label: 'dismiss',
+        onPressed: () {},
+      ),
+    );
+  
+    ScaffoldMessenger.of(con).showSnackBar(snackBar);
+  
+    return Get.toNamed('/home');
+  } else {
+    final snackBar = SnackBar(
+      content: Text('${res.body['message']}'),
+      backgroundColor: (Colors.black),
+      action: SnackBarAction(
+        label: 'dismiss',
+        onPressed: () {},
+      ),
+    );
+  
+    return ScaffoldMessenger.of(con).showSnackBar(snackBar);
+  }
+} on Exception catch (e) {
+  // TODO
+  print('E is $e');
+}
   }
 
   void increment() => count.value++;

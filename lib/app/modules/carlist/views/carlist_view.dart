@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:intl/intl.dart';
+import 'package:twh_admin/app/modules/editCars/views/edit_cars_view.dart';
 import 'package:twh_admin/app/modules/home/Widget/sidebar.dart';
 import 'package:twh_admin/app/modules/home/controllers/home_controller.dart';
 
@@ -136,6 +137,35 @@ class CarlistView extends GetView<CarlistController> {
                                                           ),
                                                         ),
                                                       ),
+                                                    ),
+                                                    Positioned(
+                                                      top: 4,
+                                                      right: 4,
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        30)),
+                                                        child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .symmetric(
+                                                                    vertical:
+                                                                        4.0,
+                                                                    horizontal:
+                                                                        8),
+                                                            child: GestureDetector(
+                                                              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (con){
+                                                                return EditCarsView(carDetails: item);
+                                                              }));},
+                                                              child: Icon(
+                                                                Icons.edit,
+                                                                color: Colors.red,
+                                                              ),
+                                                            )),
+                                                      ),
                                                     )
                                                   ],
                                                 ),
@@ -152,10 +182,10 @@ class CarlistView extends GetView<CarlistController> {
                                                 children: [
                                                   Wrap(
                                                     children: [
-                                                       Chip(
+                                                      Chip(
                                                           chiptitle:
                                                               "${item.carTitle}"),
-                                                              Chip(
+                                                      Chip(
                                                           chiptitle:
                                                               "${item.modelName}"),
                                                       Chip(
@@ -172,7 +202,7 @@ class CarlistView extends GetView<CarlistController> {
                                                               "${item.gearTransmission} Transmission"),
                                                       Chip(
                                                           chiptitle:
-                                                              "3 Star (Global NCAP)"),
+                                                              "${item.views!.length} total views"),
                                                     ],
                                                   ),
                                                 ],
