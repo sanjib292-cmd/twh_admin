@@ -185,11 +185,13 @@ class HomeController extends GetxController {
     marktPrice,
     sellPrice,
     fuel,
+    engineCC,
     gear,
     imgs,
     con,
   }) async {
     addCarsRequest.carTitle = carName;
+    addCarsRequest.engineCC=engineCC;
     addCarsRequest.modelName = modelNam;
     addCarsRequest.manufacturingYear = year;
     addCarsRequest.distanceDriven = distance;

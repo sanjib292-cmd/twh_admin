@@ -133,30 +133,7 @@ class HomeView extends GetView<HomeController> {
                               SizedBox(
                                 height: 15,
                               ),
-                              // Row(
-                              //   children: [
-                              //     Textfields(
-                              //       labelTxt: 'Engine CC',
-                              //       fn: (str) {
-                              //         controller.engineCC.value = str;
-                              //       },
-                              //       contr: controller.engine,
-                              //     ),
-                              //     SizedBox(
-                              //       width: 8,
-                              //     ),
-                              //     Textfields(
-                              //       labelTxt: 'mileage',
-                              //       fn: (str) {
-                              //         controller.milage.value = str;
-                              //       },
-                              //       contr: controller.milageContr,
-                              //     ),
-                              //   ],
-                              // ),
-                              // SizedBox(
-                              //   height: 15,
-                              // ),
+                            
                               Row(
                                 children: [
                                   dropdownField(
@@ -504,6 +481,76 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                 ),
                               ),
+                               SizedBox(
+                                height: 15,
+                              ),
+
+                              Container(
+                                height: 45,
+                                width: Get.width * 0.420 + 10,
+                                child: TextField(
+                                   inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^[0-9,]*$')),
+ 
+      ],
+                                  textAlign: TextAlign.center,
+                                  controller: controller.engine,
+                                  onChanged: (vl) {
+                                    controller.engineCC.value = vl;
+                                  },
+                                  decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.always,
+                                    alignLabelWithHint: true,
+                                    labelText: "Engine CC",
+                                    enabled: true,
+                                    labelStyle: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: BorderSide(
+                                          color: Colors
+                                              .blue), // Set border color to blue
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: BorderSide(
+                                          color: Colors
+                                              .blue), // Set border color to blue
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: BorderSide(
+                                          color: Colors
+                                              .blue), // Set border color to blue
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              //   Row(
+                              //   children: [
+                              //     Textfields(
+                              //       labelTxt: 'Engine CC',
+                              //       fn: (str) {
+                              //         controller.engineCC.value = str;
+                              //       },
+                              //       contr: controller.engine,
+                              //     ),
+                              //     SizedBox(
+                              //       width: 8,
+                              //     ),
+                              //     // Textfields(
+                              //     //   labelTxt: 'mileage',
+                              //     //   fn: (str) {
+                              //     //     controller.milage.value = str;
+                              //     //   },
+                              //     //   contr: controller.milageContr,
+                              //     // ),
+                              //   ],
+                              // ),
+                             
                               SizedBox(
                                 height: 20,
                               ),
@@ -579,6 +626,7 @@ class HomeView extends GetView<HomeController> {
                                   
                                     await 
                                     controller.addCar(
+                                      engineCC: controller.engineCC.value,
                                         con: context,
                                         carName: controller.carname.value,
                                         modelNam: controller.carModel.value,

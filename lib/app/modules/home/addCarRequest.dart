@@ -6,6 +6,7 @@ class AddCarsRequest {
   String? oilVariant;
   String? gearTransmission;
   String? price;
+  String? engineCC;
   String? marketPrice;
   String? distanceDriven;
   String? safetyRating;
@@ -16,6 +17,7 @@ class AddCarsRequest {
       this.warranty,
       this.modelName,
       this.manufacturingYear,
+      this.engineCC,
       this.oilVariant,
       this.gearTransmission,
       this.price,
@@ -27,6 +29,7 @@ class AddCarsRequest {
   AddCarsRequest.fromJson(Map<String, dynamic> json) {
     carTitle = json['carTitle'];
     warranty = json['warranty'];
+    engineCC=json['engineCC'];
     modelName = json['modelName'];
     manufacturingYear = json['manufacturingYear'];
     oilVariant = json['oilVariant'];
@@ -42,6 +45,7 @@ class AddCarsRequest {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['carTitle'] = this.carTitle;
     data['warranty'] = this.warranty;
+    data['engineCC']=this.engineCC;
     data['modelName'] = this.modelName;
     data['manufacturingYear'] = this.manufacturingYear;
     data['oilVariant'] = this.oilVariant;

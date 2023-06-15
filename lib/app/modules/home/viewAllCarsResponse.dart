@@ -33,6 +33,7 @@ class Data {
   String? warranty;
   String? modelName;
   String? manufacturingYear;
+  String? engineCC;
   String? oilVariant;
   String? gearTransmission;
   String? price;
@@ -47,6 +48,7 @@ class Data {
   Data(
       {this.sId,
       this.carTitle,
+      this.engineCC,
       this.warranty,
       this.modelName,
       this.manufacturingYear,
@@ -64,6 +66,7 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     carTitle = json['carTitle'];
+    engineCC=json['engineCC'];
     warranty = json['warranty'];
     modelName = json['modelName'];
     manufacturingYear = json['manufacturingYear'];
@@ -93,6 +96,7 @@ class Data {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['_id'] = this.sId;
     data['carTitle'] = this.carTitle;
+    data['engineCC']=this.engineCC;
     data['warranty'] = this.warranty;
     data['modelName'] = this.modelName;
     data['manufacturingYear'] = this.manufacturingYear;

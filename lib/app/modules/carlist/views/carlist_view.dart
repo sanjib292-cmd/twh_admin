@@ -190,7 +190,7 @@ class CarlistView extends GetView<CarlistController> {
                                                               "${item.modelName}"),
                                                       Chip(
                                                           chiptitle:
-                                                              "998 to 1197 cc"),
+                                                              "${item.engineCC} cc"),
                                                       Chip(
                                                           chiptitle:
                                                               "${item.oilVariant}"),
