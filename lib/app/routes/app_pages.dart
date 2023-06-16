@@ -38,11 +38,11 @@ class AppPages {
       page: () => const CarlistView(),
       binding: CarlistBinding(),
     ),
-    GetPage(
-      name: _Paths.NOTIFICATION,
-      page: () => const NotificationView(),
-      binding: NotificationBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.NOTIFICATION,
+    //   page: () => const NotificationView(),
+    //   binding: NotificationBinding(),
+    // ),
     GetPage(
       name: _Paths.USERS_LIST,
       page: () => const UsersListView(),
@@ -66,7 +66,7 @@ class AppPages {
     GetPage(
       name: _Paths.NOTIFICATION_LIST,
       page: () => const NotificationListView(),
-      binding: NotificationListBinding(),
+      binding: NotificationBinding(),
     ),
     GetPage(
       name: _Paths.EDIT_CARS,

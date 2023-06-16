@@ -69,11 +69,11 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    pagingController.addPageRequestListener((pageKey) {
-      viewAllCarsPagination(
-        pageKey,
-      );
-    });
+    // pagingController.addPageRequestListener((pageKey) {
+    //   viewAllCarsPagination(
+    //     pageKey,
+    //   );
+    // });
     FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) {
       // TODO: If necessary send token to application server.
 
@@ -102,8 +102,7 @@ class HomeController extends GetxController {
 
   AddCarsRequest addCarsRequest = AddCarsRequest();
   var viewAllCarsPaginate = ViewAllCarsResponse().obs;
-  final PagingController<int, Data> pagingController =
-      PagingController(firstPageKey: 1);
+
 
   @override
   void onReady() {
@@ -125,10 +124,10 @@ class HomeController extends GetxController {
 
   var transmission = [
     "Autometic",
-    "Manul",
+    "Manual",
   ];
 
-  var fuelType = ["Petrol", "Disel", "Electric"];
+  var fuelType = ["Petrol", "Diesel", "Electric"];
   var resellType = ["New", "Second hand", "Third Owner"];
   var category = ["New Arrival", "Second hand", "Third Owner"];
   CarsProvider carsProvider = Get.put(CarsProvider());
@@ -242,41 +241,41 @@ class HomeController extends GetxController {
     }
   }
 
-  viewAllCarsPagination(page) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    var token = pref.getString('token');
-    print('token is $token');
-    isLoading2.value = true;
-    try {
-      print('PAGE${page}');
-      var res = await carsProvider.viewAllCarsPaginate('$token', page);
-      print("base ${carsProvider.baseUrl}");
+  // viewAllCarsPagination(page) async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   var token = pref.getString('token');
+  //   print('token is $token');
+  //   isLoading2.value = true;
+  //   try {
+  //     print('PAGE${page}');
+  //     var res = await carsProvider.viewAllCarsPaginate('$token', page);
+  //     print("base ${carsProvider.baseUrl}");
 
-      if (res.body['code'] == 200) {
-        isLoading2.value = false;
-        print(res.body);
-        ViewAllCarsResponse viewAllCarsResponse =
-            ViewAllCarsResponse.fromJson(res.body);
-        viewAllCarsPaginate.value = viewAllCarsResponse;
-        final isLastPage = viewAllCarsResponse.data!.length < 10;
-        if (isLastPage) {
-          pagingController.appendLastPage(viewAllCarsResponse.data!);
-        } else {
-          final nextPageKey = page + 1;
-          pagingController.appendPage(viewAllCarsResponse.data!, nextPageKey);
-        }
-        return;
-        // Get.snackbar('Sucess', 'Otp sent sucessfully');
-      } else {
-        isLoading2.value = false;
-        print("body ${res.body}");
-        return Get.snackbar('Error', 'Server error while sending otp');
-      }
-    } on Exception catch (e) {
-      // TODO
-      print(e);
-    }
-  }
+  //     if (res.body['code'] == 200) {
+  //       isLoading2.value = false;
+  //       print(res.body);
+  //       ViewAllCarsResponse viewAllCarsResponse =
+  //           ViewAllCarsResponse.fromJson(res.body);
+  //       viewAllCarsPaginate.value = viewAllCarsResponse;
+  //       final isLastPage = viewAllCarsResponse.data!.length < 10;
+  //       if (isLastPage) {
+  //         pagingController.appendLastPage(viewAllCarsResponse.data!);
+  //       } else {
+  //         final nextPageKey = page + 1;
+  //         pagingController.appendPage(viewAllCarsResponse.data!, nextPageKey);
+  //       }
+  //       return;
+  //       // Get.snackbar('Sucess', 'Otp sent sucessfully');
+  //     } else {
+  //       isLoading2.value = false;
+  //       print("body ${res.body}");
+  //       return Get.snackbar('Error', 'Server error while sending otp');
+  //     }
+  //   } on Exception catch (e) {
+  //     // TODO
+  //     print(e);
+  //   }
+  // }
 
   void increment() => count.value++;
 }

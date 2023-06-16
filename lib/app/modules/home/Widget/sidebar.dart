@@ -3,6 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:twh_admin/app/modules/notification/controllers/notification_controller.dart';
+
+import '../../carlist/controllers/carlist_controller.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
@@ -40,7 +43,8 @@ class SideBar extends StatelessWidget {
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
-                    onTap: () {
+                    onTap: () async{
+                      await Get.delete<CarlistController>();
                       Get.toNamed('/carlist');
                     },
                     child: Row(
@@ -122,7 +126,8 @@ class SideBar extends StatelessWidget {
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
-                    onTap: () {
+                    onTap: () async{
+                        await Get.delete<NotificationController>();
                       Get.toNamed('/notification-list');
                     },
                     child: Row(

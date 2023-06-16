@@ -16,7 +16,7 @@ class CarlistView extends GetView<CarlistController> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+    final controller = Get.put(CarlistController());
     print(Get.width);
     return Scaffold(
       backgroundColor: Color(0xfff4f4f4),
@@ -83,7 +83,8 @@ class CarlistView extends GetView<CarlistController> {
                                                         color:
                                                             Color(0xfff4f4f4),
                                                       ),
-                                                      child: CachedNetworkImage(
+                                                      child: 
+                                                      CachedNetworkImage(
                                                           fit: BoxFit.cover,
                                                           imageUrl: item
                                                                   .imagesUrl!
