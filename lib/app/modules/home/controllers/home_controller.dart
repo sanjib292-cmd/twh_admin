@@ -9,7 +9,6 @@ import 'dart:html' as html;
 import 'package:flutter/foundation.dart';
 
 import 'package:image_picker_web/image_picker_web.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:twh_admin/app/modules/home/addCarRequest.dart';
 import 'package:twh_admin/app/modules/home/providers/user_provider.dart';
@@ -123,7 +122,7 @@ class HomeController extends GetxController {
   ];
 
   var transmission = [
-    "Autometic",
+    "Automatic",
     "Manual",
   ];
 

@@ -15,6 +15,8 @@ import '../modules/notificationList/bindings/notification_list_binding.dart';
 import '../modules/notificationList/views/notification_list_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/privicyPolicy/bindings/privicy_policy_binding.dart';
+import '../modules/privicyPolicy/views/privicy_policy_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/usersList/bindings/users_list_binding.dart';
@@ -70,8 +72,15 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_CARS,
-      page: () =>  EditCarsView(carDetails:Data.fromJson({}),),
+      page: () => EditCarsView(
+        carDetails: Data.fromJson({}),
+      ),
       binding: EditCarsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRIVICY_POLICY,
+      page: () => const PrivicyPolicyView(),
+      binding: PrivicyPolicyBinding(),
     ),
   ];
 }

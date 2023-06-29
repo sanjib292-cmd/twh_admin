@@ -12,6 +12,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const NOTIFICATION_LIST = _Paths.NOTIFICATION_LIST;
   static const EDIT_CARS = _Paths.EDIT_CARS;
+  static const PRIVICY_POLICY = _Paths.PRIVICY_POLICY;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const NOTIFICATION_LIST = '/notification-list';
   static const EDIT_CARS = '/edit-cars';
+  static const PRIVICY_POLICY = '/privicy-policy';
 }

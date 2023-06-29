@@ -10,6 +10,7 @@ dependencies:
   dotted_border: ^2.0.0+3
   image_picker: ^0.8.7+4
   image_picker_web: ^3.0.0+1
+  fwfh_webview: ^0.7.0+2
   firebase_core: ^2.11.0
   firebase_storage: ^11.1.2
   firebase_messaging: ^14.6.1
