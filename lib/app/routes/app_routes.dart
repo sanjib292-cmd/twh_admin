@@ -26,5 +26,5 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const NOTIFICATION_LIST = '/notification-list';
   static const EDIT_CARS = '/edit-cars';
-  static const PRIVICY_POLICY = '/privicy-policy';
+  static const PRIVICY_POLICY = '/privacy-policy';
 }

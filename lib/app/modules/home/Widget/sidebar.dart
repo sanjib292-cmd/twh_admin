@@ -203,6 +203,51 @@ class SideBar extends StatelessWidget {
                     ),
                   ),
                 ),
+                 SizedBox(
+                  height: 25,
+                ),
+                 MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () async{
+                      await Get.delete<CarlistController>();
+                      Get.toNamed('/privacy-policy');
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 22,
+                          width: 22,
+                          decoration: BoxDecoration(
+                           ),
+                           child: Icon(Icons.info_outline,color: Colors.white,),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Text(
+                            "Policy",
+                            style: TextStyle(
+                              color: Color(0xddffffff),
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        ModalRoute.of(context)!.settings.name == '/privacy-policy'
+                            ? Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Container()
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
               ],
             ),
 

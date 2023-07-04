@@ -9,6 +9,7 @@ import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -22,6 +23,7 @@ void main() async {
   );
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       defaultTransition: Transition.noTransition, //this would be the solution
       transitionDuration: Duration(seconds: 0),
 
